@@ -1,0 +1,6 @@
+tree
+htop
+tldr
+jq
+task
+tmux
