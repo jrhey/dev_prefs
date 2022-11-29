@@ -35,6 +35,11 @@ Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-line'
 Plugin 'dracula/vim', { 'name': 'dracula' }
+Plugin 'plasticboy/vim-markdown'
+Plugin 'junegunn/limelight.vim'
+Plugin 'junegunn/goyo.vim'
+Plugin 'vim-ruby/vim-ruby'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -43,15 +48,14 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 
 syntax enable
-"set background=dark
 colorscheme dracula
 let base16colorspace=256        " Access colors present in 256 colorspace
-"set guifont=Inconsolata\ for\ Powerline:h16
-set guifont=JetBrains\ Mono\ Regular:h14
+set guifont=JetBrains\ Mono\ ExtraLight:h14
 set linespace=3
 set nowrap
 set noswapfile
 set hidden
+set linebreak
 " set wildmenu
 set showcmd
 set hlsearch
@@ -68,9 +72,18 @@ set t_vb=
 set cursorline
 set cmdheight=1
 set number
-set shiftwidth=2
-set softtabstop=2
-set expandtab
+
+" dealing with tabs
+set noexpandtab
+set softtabstop=0
+set shiftwidth=4
+set tabstop=2
+set list
+set listchars=eol:¬,tab:·\ 
+"set listchars=eol:¬,tab:▸\ 
+set copyindent
+set preserveindent
+
 nnoremap <esc><esc> :nohl<CR>
 nnoremap <C-g> :GitGutterLineHighlightsToggle<CR>
 set relativenumber
@@ -94,7 +107,7 @@ set guioptions-=L
 set guioptions-=R
 
 "colorscheme solarized
-set noballooneval "remove hover from vim-ruby
+"set noballooneval "remove hover from vim-ruby
 
 "syntastic begin
 set statusline+=%#warningmsg#
@@ -149,13 +162,13 @@ nnoremap <silent> * :let stay_star_view = winsaveview()<cr>*:call winrestview(st
 " prettify xml
 nnoremap <leader>xt <Esc>:PrettyXML<CR>
 " prettify json
-nnoremap <leader>jt :%!python -m json.tool<cr>
+nnoremap <leader>jt :%!python3 -m json.tool<cr>
 
 " set-up the missing ToggleBG definition for Solarized
 call togglebg#map("")
 
 " display the tabline at all times
-set showtabline=2
+set showtabline=4
 set guioptions-=e
 
 let g:ctrlp_working_path_mode = 0
